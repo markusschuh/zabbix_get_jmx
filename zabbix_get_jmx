@@ -40,8 +40,8 @@ def main():
   query_str = json.dumps(query)
   query_len = len(query_str)
   query_len_hex = '%.16x' % query_len
-  query_len_bin = re.sub(r'^(..)(..)(..)(..)(..)(..)(..)(..)', '\\x\\8\\x\\7\\x\\6\\x\\5\\x\\4\\x\\3\\x\\2\\x\\1', query_len_hex)
-  query_bin = "ZBXD\\x01%s" % (query_len_bin)
+  query_len_bin = re.sub(r'^(..)(..)(..)(..)(..)(..)(..)(..)', r'\\x\8\\x\7\\x\6\\x\5\\x\4\\x\3\\x\2\\x\1', query_len_hex)
+  query_bin = r"ZBXD\x01%s" % (query_len_bin)
   query_bin = query_bin.encode('latin-1').decode('unicode_escape')
   query_bin += query_str
 
